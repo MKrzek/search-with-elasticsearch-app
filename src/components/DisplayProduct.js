@@ -3,8 +3,8 @@ export default class DisplayProduct extends React.Component{
     render(){
         console.log('individual product', this.props.product)
         const{name, price}=this.props.product._source
-        return <ul>
-                 <li>
+        return <ul className='list-group'>
+                 <li className='list-group-item'>
                  {name}, £{price}
                  </li>
                </ul>

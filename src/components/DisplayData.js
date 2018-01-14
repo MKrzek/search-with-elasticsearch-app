@@ -25,4 +25,4 @@ class DisplayData extends React.Component{
 function mapStateToProps (state){
     return {data: state.display}
 };
-export default connect(mapStateToProps, null)(DisplayData)
+export default connect(mapStateToProps, null)(DisplayData);

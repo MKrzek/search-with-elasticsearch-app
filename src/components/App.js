@@ -1,16 +1,26 @@
-import React, { Component } from 'react';
+import React  from 'react';
+import{Route} from 'react-router-dom';
+import {ConnectedRouter} from 'react-router-redux';
+import {history} from '../store.js';
 
 import DisplayData from './DisplayData.js';
 import SearchBar from './SearchBar.js';
-class App extends Component {
+
+ export default class App extends React.Component {
+
   render() {
-    return <div>
-           <SearchBar/>
-           <DisplayData/>
-           </div>
-      
+    
+    return <ConnectedRouter history={history}>
+            <div>
+              <Route exact path='/' component={SearchBar}/> 
+              <Route path='/products' component={DisplayData}/> 
+            </div>
+            </ConnectedRouter>
+           
+    
     
   }
 }
 
-export default App;
+
+

@@ -15,7 +15,10 @@ renderSearchBar=(field)=>{
 }
 submitSearchTerm=(values)=>{
     console.log('values', values)
-    this.props.performQuery(values)
+    this.props.performQuery(values, ()=>{
+        this.props.history.push('/products')
+    }
+)
 }
     render(){
         const{handleSubmit}=this.props
