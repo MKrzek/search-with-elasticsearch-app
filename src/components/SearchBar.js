@@ -5,7 +5,7 @@ import * as Actions from '../actions/index.js';
 
 class SearchBar extends React.Component{
 renderSearchBar=(field)=>{
-    console.log ('field.meta.error', field.meta.error)
+    
     
     return <fieldset className='form-group'>
                 <label className='col form-label'>{field.label}</label>
