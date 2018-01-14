@@ -1,5 +1,5 @@
 import elasticsearch from 'elasticsearch';
-
+export const DISPLAY_PRODUCTS = "DISPLAY_PRODUCTS";
 const client = new elasticsearch.Client({
     
     host:'http://localhost:9200',
@@ -15,6 +15,7 @@ export function performQuery(values){
         q: value
     }).then(function(body){
             dispatch({
+            type: DISPLAY_PRODUCTS,
             payload: body.hits.hits
          }) 
          

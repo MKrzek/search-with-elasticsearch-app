@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 
-
-import SearchBar from './SearchBar.js'
+import DisplayData from './DisplayData.js';
+import SearchBar from './SearchBar.js';
 class App extends Component {
   render() {
-    return <SearchBar/>
+    return <div>
+           <SearchBar/>
+           <DisplayData/>
+           </div>
       
     
   }
