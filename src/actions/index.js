@@ -1,5 +1,6 @@
 import elasticsearch from 'elasticsearch';
-export const DISPLAY_PRODUCTS = "DISPLAY_PRODUCTS";
+export const DISPLAY_PRODUCTS = 'DISPLAY_PRODUCTS';
+export const FETCH_CATEGORY='FETCH_CATEGORY';
 const client = new elasticsearch.Client({
     
     host:'http://localhost:9200',
@@ -26,4 +27,27 @@ export function performQuery(values ,callback){
         console.trace(error.message)
     })
 }}
+
+export function fetchCategory(value) {
+    const item=value
+    return function (dispatch) {
+        client.search({ 
+            body:{
+               query:{
+                match:{
+                    tags: item
+                }
+            } 
+        }
+            })
+            .then(function (body) {
+                dispatch({
+                    type: FETCH_CATEGORY,
+                    payload: body.hits.hits})
+            })
+            .catch(function (error) {
+                console.trace(error.message)
+            })
+    }
+}
 

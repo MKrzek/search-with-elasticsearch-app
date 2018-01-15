@@ -3,6 +3,8 @@ import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 import * as Actions from '../actions/index.js';
 
+import Navigation from './Navigation.js';
+
 class SearchBar extends React.Component{
 renderSearchBar=(field)=>{
     
@@ -22,7 +24,12 @@ submitSearchTerm=(values)=>{
 }
     render(){
         const{handleSubmit}=this.props
-        return<div className='container'>
+        return <div>
+                  <div>
+                      <Navigation/>
+                  </div>
+               <div className='container'>
+              
                <form onSubmit={handleSubmit(this.submitSearchTerm)}>
                <Field
                name='searchBar'
@@ -32,6 +39,7 @@ submitSearchTerm=(values)=>{
               />
               <button type='submit' className='btn btn-primary'>Search</button>
               </form>
+              </div>
               </div>
             
     };

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import _ from 'lodash';
 
 import DisplayProduct from './DisplayProduct.js';
-
+import Navigation from './Navigation.js';
 class DisplayData extends React.Component{
     
     renderData=()=>{
@@ -16,7 +16,12 @@ class DisplayData extends React.Component{
     render(){
         console.log ('this.props.data', this.props.data)
         return <div>
+                   <div>
+                       <Navigation />
+                   </div>
+                <div>
                     {this.renderData()}
+               </div>
                </div>
 
         

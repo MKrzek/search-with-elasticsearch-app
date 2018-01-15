@@ -1,4 +1,5 @@
 import React from 'react';
+
 export default class DisplayProduct extends React.Component{
     render(){
         console.log('individual product', this.props.product)
