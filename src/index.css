@@ -8,3 +8,13 @@ body {
   display: flex;
   flex-direction: row;
 }
+
+.pagination a {
+  padding: 10px;
+  background: #ededed;
+}
+
+.previous .disabled {
+  padding: 10px;
+  background: #b0acac;
+}

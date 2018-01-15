@@ -22,6 +22,7 @@ class Meat extends React.Component {
             <div>
                 <Navigation/>
             </div>
+             <h2>Fish and Meat</h2>
             <div>
                 {this.renderCat()}
             </div>

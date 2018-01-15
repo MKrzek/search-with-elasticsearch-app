@@ -3,28 +3,59 @@ import Navigation from './Navigation.js';
 import {connect} from 'react-redux';
 import DisplayProduct from './DisplayProduct.js';
 import * as Actions from '../actions/index.js';
+import ReactPaginate from 'react-paginate';
 
 import _ from 'lodash';
 class Veg extends React.Component {
 
     componentDidMount() {
         const value = 'vegetable';
-        this.props.fetchCategory(value)
+        const selected_page = 0;
+         this.props.fetchCategory(value, selected_page)
     }
+
     renderCat = () => {
-        return _.map(this.props.veg, veg => {
+        return _.map(this.props.veg.hits, veg => {
             return <DisplayProduct product={veg} key={veg._id}/>
         })
     }
+    
+    handlePageClick = (page) => {
+    let selected_page = page.selected
+    console.log('selected', selected_page);
+    const value = 'fruit';
+    this.props.fetchCategory(value, selected_page)
+
+}
+
 
     render() {
+    const totalHits = this.props.veg.total
+    console.log('totalHits', totalHits)
+    const pageCount = Math.ceil(totalHits / 5);
+    console.log('pageCount', pageCount)
         return <div>
             <div>
                 <Navigation/>
             </div>
+            <h2>Vegetables</h2>
             <div>
                 {this.renderCat()}
+                <div> 
+                    <ReactPaginate
+                    nextLabel={'next'}
+                    previousLabel={'previous'}
+                    activeClassName={'active'}
+                    subContainerClassName={'pages pagination'}
+                    containerClassName={'pagination'}
+                    breakClassName={'break-me'}
+                    pageRangeDisplayed={5}
+                    marginPagesDisplayed={2}
+                    onPageChange={this.handlePageClick}
+                    pageCount={pageCount}/> 
+                </div>
             </div>
+
         </div>
     }
 }

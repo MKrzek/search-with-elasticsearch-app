@@ -22,6 +22,7 @@ class Alcohol extends React.Component {
             <div>
                 <Navigation/>
             </div>
+            <h2>Alcohol</h2>
             <div>
                 {this.renderCat()}
             </div>

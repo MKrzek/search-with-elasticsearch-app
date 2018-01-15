@@ -10,5 +10,6 @@ form: FormReducer,
 display: displayReducer,
 category: categoryReducer,
 
+
 })
 export default rootReducer
