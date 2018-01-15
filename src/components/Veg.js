@@ -23,11 +23,10 @@ class Veg extends React.Component {
     handlePageClick = (page) => {
     let selected_page = page.selected
     console.log('selected', selected_page);
-    const value = 'fruit';
+    const value = 'vegetable';
     this.props.fetchCategory(value, selected_page)
 
 }
-
 
     render() {
     const totalHits = this.props.veg.total

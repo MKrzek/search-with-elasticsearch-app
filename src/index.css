@@ -12,9 +12,11 @@ body {
 .pagination a {
   padding: 10px;
   background: #ededed;
+  margin-top:20px;
 }
 
 .previous .disabled {
   padding: 10px;
   background: #b0acac;
+  margin-top:20px;
 }

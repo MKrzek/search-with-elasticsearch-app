@@ -14,9 +14,8 @@ componentDidMount(){
     const selected_page=0;
     this.props.fetchCategory(value, selected_page)
 }
-renderFruit=()=>{
+renderCat=()=>{
     console.log ('fruit', this.props.fruit.hits)
-    
      return _.map(this.props.fruit.hits, fruit=>{
          return <DisplayProduct product={fruit} key={fruit._id}/>})  
 }
@@ -40,7 +39,7 @@ handlePageClick=(page)=>{
                 </div>
                 <h2>Fruit</h2>
                 <div>
-                    {this.renderFruit()}
+                    {this.renderCat()}
                     <div>
                         <ReactPaginate nextLabel={'next'}
                                        previousLabel={'previous'}
