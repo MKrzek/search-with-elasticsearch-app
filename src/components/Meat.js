@@ -20,15 +20,13 @@ class Meat extends React.Component {
 
     handlePageClick = (page) => {
     let selected_page = page.selected
-    console.log('selected', selected_page);
     const value = 'meat';
     this.props.fetchCategory(value, selected_page)
 }
     render() {
     const totalHits = this.props.meat.total
-    console.log('totalHits', totalHits)
     const pageCount = Math.ceil(totalHits / 5);
-    console.log('pageCount', pageCount)
+    
         return <div>
             <div>
                 <Navigation/>

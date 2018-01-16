@@ -7,6 +7,13 @@ import Navigation from './Navigation.js';
 import DisplayData from './DisplayData.js';
 
 class SearchBar extends React.Component{
+  constructor(props){
+      super(props);
+      this.state={
+          render: false
+      }
+  }  
+
 
 renderSearchBar=(field)=>{
     return <fieldset className='form-group'>
@@ -17,15 +24,13 @@ renderSearchBar=(field)=>{
 }
 
 submitSearchTerm=(value)=>{
-   
-   console.log ('valueSearch', value)
     const selected_page=0;
-    this.props.performQuery(value, selected_page)
-    //, ()=>{
-       /// this.props.history.push('/products')
-    }
-//)
-//}
+    this.props.performQuery(value, selected_page);
+    this.setState({
+        render: true
+    })
+    
+}
     render(){
         const{handleSubmit}=this.props
         return <div>
@@ -44,7 +49,7 @@ submitSearchTerm=(value)=>{
               </form>
               </div>
               <div>
-                  <DisplayData/>
+                  {this.state.render ? (<DisplayData/>) : ''}
               </div>
               </div>
             

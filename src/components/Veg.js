@@ -22,17 +22,15 @@ class Veg extends React.Component {
     
     handlePageClick = (page) => {
     let selected_page = page.selected
-    console.log('selected', selected_page);
     const value = 'vegetable';
     this.props.fetchCategory(value, selected_page)
 
 }
 
     render() {
-    const totalHits = this.props.veg.total
-    console.log('totalHits', totalHits)
+    const totalHits = this.props.veg.total;
     const pageCount = Math.ceil(totalHits / 5);
-    console.log('pageCount', pageCount)
+    
         return <div>
             <div>
                 <Navigation/>

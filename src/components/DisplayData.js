@@ -3,26 +3,26 @@ import {connect} from 'react-redux';
 import _ from 'lodash';
 import * as Actions from '../actions/index.js';
 import DisplayProduct from './DisplayProduct.js';
-//import Navigation from './Navigation.js';
+
 import ReactPaginate from 'react-paginate';
 class DisplayData extends React.Component{
     
+    
     renderData=()=>{
         const copyData=Object.assign({},this.props.data.data)
-        console.log ('datacopy', copyData)
         const hits=copyData.hits;
-        console.log('hits', hits)
         return _.map(hits, item=>{
-          console.log ('item', item)
            return <DisplayProduct product={item} key={item._id}/>
         })
+       
     }
 
 
-handlePageClick = (page) => {
-    let selected_page = page.selected;
-    const value = {searchBar: this.props.data.name};
-    this.props.performQuery(value, selected_page)
+   handlePageClick = (page) => {
+        let selected_page = page.selected;
+        const value = {searchBar: this.props.data.name};
+        this.props.performQuery(value, selected_page);
+        
 }
     
     render(){

@@ -22,7 +22,6 @@ renderCat=()=>{
 
 handlePageClick=(page)=>{
   let selected_page=page.selected
-  console.log ('selected', selected_page);
   const value='fruit';
   this.props.fetchCategory(value, selected_page)
   
@@ -30,9 +29,7 @@ handlePageClick=(page)=>{
 
     render(){
         const totalHits=this.props.fruit.total
-        console.log ('totalHits', totalHits)
         const pageCount= Math.ceil(totalHits/5);
-        console.log ('pageCount', pageCount)
         return<div>
                  <div>
                      <Navigation/>

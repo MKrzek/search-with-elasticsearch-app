@@ -19,7 +19,6 @@ class Alcohol extends React.Component {
     }
    handlePageClick = (page) => {
     let selected_page = page.selected
-    console.log('selected', selected_page);
     const value = 'alcohol';
     this.props.fetchCategory(value, selected_page)
 
@@ -27,9 +26,7 @@ class Alcohol extends React.Component {
 
     render() {
         const totalHits = this.props.alcohol.total
-        console.log('totalHits', totalHits)
         const pageCount = Math.ceil(totalHits / 5);
-        console.log('pageCount', pageCount)
         return <div>
             <div>
                 <Navigation/>
