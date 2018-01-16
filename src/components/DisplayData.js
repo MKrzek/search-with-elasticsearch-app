@@ -19,17 +19,14 @@ class DisplayData extends React.Component{
     }
 }
    handlePageClick = (page) => {
-        let selected_page = page.selected;
+        let page_selected = page.selected;
         const value = {searchBar: this.props.data.name};
-        this.props.performQuery(value, selected_page);
-        this.props.history.push(`/products/page=${selected_page+1}`)
+        this.props.performQuery(value, page_selected);
+        this.props.history.push(`/products/page=${page_selected+1}`)
        
        
 } 
-matchRoutes=() =>{
-      return 
-        
-}
+
 
     render(){
         const copyData=Object.assign({}, this.props.data.data)

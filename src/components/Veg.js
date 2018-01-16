@@ -10,8 +10,8 @@ class Veg extends React.Component {
 
     componentDidMount() {
         const value = 'vegetable';
-        const selected_page = 0;
-         this.props.fetchCategory(value, selected_page)
+        const page_selected = 0;
+         this.props.fetchCategory(value, page_selected)
     }
 
     renderCat = () => {
@@ -21,10 +21,10 @@ class Veg extends React.Component {
     }
     
     handlePageClick = (page) => {
-    let selected_page = page.selected
+    let page_selected = page.selected
     const value = 'vegetable';
-    this.props.fetchCategory(value, selected_page);
-     this.props.history.push(`/veg/page=${selected_page + 1}`)
+    this.props.fetchCategory(value, page_selected);
+     this.props.history.push(`/veg/page=${page_selected + 1}`)
 
 }
 

@@ -9,8 +9,8 @@ class Meat extends React.Component {
 
     componentDidMount() {
         const value = 'meat';
-        const selected_page=0;
-        this.props.fetchCategory(value, selected_page)
+        const page_selected=0;
+        this.props.fetchCategory(value, page_selected)
     }
     renderCat = () => {
         return _.map(this.props.meat.hits, meat => {
@@ -19,10 +19,10 @@ class Meat extends React.Component {
     }
 
     handlePageClick = (page) => {
-    let selected_page = page.selected
+    let page_selected = page.selected
     const value = 'meat';
-    this.props.fetchCategory(value, selected_page)
-    this.props.history.push(`/meat/page=${selected_page + 1}`)
+    this.props.fetchCategory(value, page_selected)
+    this.props.history.push(`/meat/page=${page_selected + 1}`)
 
 }
     render() {

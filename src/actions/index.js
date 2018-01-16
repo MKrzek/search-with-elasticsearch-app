@@ -7,20 +7,21 @@ const client = new elasticsearch.Client({
     log: 'trace'
 })
 
-export function performQuery(value,selected_page){
+export function performQuery(value,page_selected){
     const term=value.searchBar
     const page_size=5;
-    const page_number = Number(selected_page)
+    const page_number = Number(page_selected)
     const from=(page_size * (page_number))
     
     return function(dispatch){
-    client.search({
+        client.search({
         size: page_size,
         from: from,
         body:{
             query:{
-                match:{
-                    name: term
+                multi_match:{
+                    query: term,
+                    fields:['name', 'tags', 'description']
                 }
             }
         }
@@ -37,10 +38,10 @@ export function performQuery(value,selected_page){
         console.trace(error.message)
     })
 }};
-export function fetchCategory(value,selected_page) {
-    const item=value;
+export function fetchCategory(value,page_selected) {
+    const term=value;
     const page_size = 5;
-    const page_number = Number(selected_page)
+    const page_number = Number(page_selected)
     const from = (page_size * (page_number))
     return function (dispatch) {
         client.search({ 
@@ -49,18 +50,49 @@ export function fetchCategory(value,selected_page) {
             body:{
                query:{
                 match:{
-                    tags: item
+                    tags: term
                 }
-            } 
+            },
+            sort:[
+            {'price': 'asc'}
+            ] 
         }
     }).then(function (body) {
             dispatch({
                     type: FETCH_CATEGORY,
                     payload: body.hits})   
-            })
-            .catch(function (error) {
+            }).catch(function (error) {
                 console.trace(error.message)
             })   
     }
+}
+
+export function sortByPrice(value, page_selected){
+const term = value
+const page_size = 5;
+const page_number = Number(page_selected)
+const from = (page_size * (page_number))
+   return function(dispatch){
+       client.search({
+           size: page_size,
+           from: from,
+           body:{
+            query:{
+              match:{
+                  tags: term
+              }
+            },
+                sort:[
+                    {'price': 'desc'}   
+                ]
+            }
+       }).then(function(body){
+           dispatch({
+               type: FETCH_CATEGORY,
+               payload: body.hits})
+       }).catch(function(error){
+           console.trace (error.message)
+       })
+   }
 }
 

@@ -7,12 +7,17 @@ import ReactPaginate from 'react-paginate';
 
 import _ from 'lodash';
 class Fruit extends React.Component{
-    
+    constructor(props){
+        super(props);
+        this.state={
+            render:false
+        }
+    }
 
 componentDidMount(){
     const value='fruit';
-    const selected_page=0;
-    this.props.fetchCategory(value, selected_page)
+    const page_selected=0;
+    this.props.fetchCategory(value, page_selected)
 }
 renderCat=()=>{
     console.log ('fruit', this.props.fruit.hits)
@@ -21,12 +26,32 @@ renderCat=()=>{
 }
 
 handlePageClick=(page)=>{
-  let selected_page=page.selected
+  let page_selected=page.selected
   const value='fruit';
-  this.props.fetchCategory(value, selected_page)
-  this.props.history.push(`/fruit/page=${selected_page + 1}`)
+  if (this.state.render){
+      this.props.sortByPrice(value, page_selected)
+  }else{
+  this.props.fetchCategory(value, page_selected)
+  };
+  this.props.history.push(`/fruit/page=${page_selected + 1}`)  
+}
 
-  
+priceAsc=()=>{
+    const value='fruit';
+    const page_selected=0;
+    this.props.sortByPrice(value, page_selected);
+    this.setState({
+        render: true
+    })
+      this.props.history.push(`/fruit/page=${page_selected + 1}`)
+    
+}
+priceDesc=()=>{
+    const value = 'fruit';
+    const page_selected = 0;
+    this.props.sortByPrice(value, page_selected);
+    this.setState({render: false})
+    this.props.history.push(`/fruit/page=${page_selected + 1}`)
 }
 
     render(){
@@ -36,7 +61,14 @@ handlePageClick=(page)=>{
                  <div>
                      <Navigation/>
                 </div>
+                <div className='container'>
+                <div className='row'>
                 <h2>Fruit</h2>
+                <button className='btn btn-primary ml-4' onClick={this.priceAsc}>Highest First</button>
+                <button className='btn btn-primary ml-4' onClick={this.priceDesc}>Lowest First</button>
+                </div>
+                </div>
+               
                 <div>
                     {this.renderCat()}
                     <div>
@@ -50,8 +82,6 @@ handlePageClick=(page)=>{
                                        marginPagesDisplayed={3}
                                        onPageChange={this.handlePageClick}
                                        pageCount={pageCount}
-                            
-
                         />
                     </div>
                 </div>
