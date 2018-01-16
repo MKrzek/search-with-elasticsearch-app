@@ -40,6 +40,7 @@ class Veg extends React.Component {
             <h2>Vegetables</h2>
             <div>
                 {this.renderCat()}
+            </div>
                 <div> 
                     <ReactPaginate
                     nextLabel={'next'}
@@ -55,7 +56,7 @@ class Veg extends React.Component {
                 </div>
             </div>
 
-        </div>
+        
     }
 }
 

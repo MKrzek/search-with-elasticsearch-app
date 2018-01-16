@@ -8,13 +8,13 @@ const client = new elasticsearch.Client({
     log: 'trace'
 })
 
-export function performQuery(values,selected_page, callback){
-    console.log ('values in action', values.searchBar)
-    const value=values.searchBar;
+export function performQuery(value,selected_page){
+
+    const term=value.searchBar
     const page_size=5;
     const page_number = Number(selected_page)
     const from=(page_size * (page_number))
-    console.log ('value', value)
+    
     return function(dispatch){
     client.search({
         size: page_size,
@@ -22,17 +22,17 @@ export function performQuery(values,selected_page, callback){
         body:{
             query:{
                 match:{
-                    name: value
+                    name: term
                 }
             }
         }
     
     }).then(function(body){
-       console.log('bodyhits', body.hits.total)   
-        callback()
+       const data={data: body.hits, name:term}
+        //callback()
             dispatch({
             type: DISPLAY_PRODUCTS,
-            payload: body.hits.hits
+            payload: data
          }) 
          
          }  
