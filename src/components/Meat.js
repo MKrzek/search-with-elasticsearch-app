@@ -22,6 +22,8 @@ class Meat extends React.Component {
     let selected_page = page.selected
     const value = 'meat';
     this.props.fetchCategory(value, selected_page)
+    this.props.history.push(`/meat/page=${selected_page + 1}`)
+
 }
     render() {
     const totalHits = this.props.meat.total

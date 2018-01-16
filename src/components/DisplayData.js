@@ -5,6 +5,7 @@ import _ from 'lodash';
 import * as Actions from '../actions/index.js';
 import DisplayProduct from './DisplayProduct.js';
 import ReactPaginate from 'react-paginate';
+import Navigation from './Navigation.js';
 class DisplayData extends React.Component{
     
     renderData=()=>{
@@ -36,6 +37,7 @@ matchRoutes=() =>{
         const pageCount = Math.ceil(totalHits / 5);
         return <div>
                    <div>  
+                       <Navigation/>
                    </div>
                 <div>
                     {this.renderData()}

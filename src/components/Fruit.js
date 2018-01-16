@@ -24,6 +24,8 @@ handlePageClick=(page)=>{
   let selected_page=page.selected
   const value='fruit';
   this.props.fetchCategory(value, selected_page)
+  this.props.history.push(`/fruit/page=${selected_page + 1}`)
+
   
 }
 
