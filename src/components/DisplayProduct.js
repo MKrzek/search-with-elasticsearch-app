@@ -5,7 +5,7 @@ export default class DisplayProduct extends React.Component{
         const{name, price}=this.props.product._source
         return <ul className='list-group'>
                  <li className='list-group-item'>
-                 {name}, £{price}
+                    {name}, £{price}
                  </li>
                </ul>
     }

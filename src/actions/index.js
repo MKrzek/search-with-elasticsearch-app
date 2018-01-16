@@ -27,18 +27,16 @@ export function performQuery(value,selected_page){
     
     }).then(function(body){
        const data={data: body.hits, name:term}
-       
             dispatch({
             type: DISPLAY_PRODUCTS,
             payload: data
-         }) 
-         
-         }  
+         })  
+    }  
     )
     .catch(function(error){
         console.trace(error.message)
     })
-}}
+}};
 export function fetchCategory(value,selected_page) {
     const item=value;
     const page_size = 5;
@@ -55,10 +53,8 @@ export function fetchCategory(value,selected_page) {
                 }
             } 
         }
-            })
-            
-            .then(function (body) {
-                dispatch({
+    }).then(function (body) {
+            dispatch({
                     type: FETCH_CATEGORY,
                     payload: body.hits})   
             })

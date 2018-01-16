@@ -2,7 +2,7 @@ import React from 'react'
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 import * as Actions from '../actions/index.js';
-
+import {Redirect} from 'react-router-dom';
 import Navigation from './Navigation.js';
 import DisplayData from './DisplayData.js';
 
@@ -49,7 +49,8 @@ submitSearchTerm=(value)=>{
               </form>
               </div>
               <div>
-                  {this.state.render ? (<DisplayData/>) : ''}
+                  {this.state.render ? (<Redirect to={{pathname:'/products/page=1'}}/>): null}
+                  {this.state.render ? (<DisplayData/>) : null}
               </div>
               </div>
             
