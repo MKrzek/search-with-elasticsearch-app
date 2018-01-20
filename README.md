@@ -1,4 +1,4 @@
-The app has been created using React (Create React App), Redux, and ElasticSearch as a search engine;
+The app has been created with React (Create React App), Redux, and ElasticSearch (as a search engine);
 
 To run the app,  clone or download this repository and follow  the instructions below:
 
